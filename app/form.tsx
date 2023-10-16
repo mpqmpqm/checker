@@ -12,10 +12,7 @@ const action = async (formData: FormData) => {
 
 export const Form = () => {
     return (
-        <form
-            action={action}
-            className="flex gap-2 grow ps-4 pe-3 py-4 items-end"
-        >
+        <form action={action} className="flex gap-2  items-end">
             <textarea
                 name="query"
                 className="p-1 border rounded-sm border-slate-300 w-full"
