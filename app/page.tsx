@@ -2,6 +2,8 @@ import { stream } from '@/data/ai';
 import { Form } from './form';
 import { Suspense } from 'react';
 
+export const revalidate = 0;
+
 async function Tokens({ stream }: { stream: ReadableStream }) {
     const reader = stream.getReader();
 
