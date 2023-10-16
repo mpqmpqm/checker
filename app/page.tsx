@@ -4,8 +4,9 @@ import { Suspense } from 'react';
 
 export const revalidate = 0;
 
-async function Tokens({ stream }: { stream: ReadableStream }) {
-    const reader = stream.getReader();
+async function Tokens() {
+    const res = await stream();
+    const reader = res.getReader();
 
     return (
         <Suspense>
@@ -38,10 +39,9 @@ async function RecursiveTokens({
 }
 
 export default async function Home() {
-    const res = await stream();
     return (
         <main className="flex flex-col items-stretch justify-end h-[100dvh] p-4 gap-4 bg-black text-white">
-            <Tokens stream={res} />
+            <Tokens />
             <Form />
         </main>
     );
