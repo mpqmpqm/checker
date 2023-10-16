@@ -24,7 +24,7 @@ export async function stream() {
             {
                 role: 'system',
                 content:
-                    'At the start of each conversation, pick two figures from Greek mythology and give a three-sentence overview of their relationship. Then ask the user how their day is going.',
+                    'At the start of each conversation, pick two figures from Greek mythology and give a concise summary of their relationship. Then ask the user how their day is going.',
             },
         ],
     });
