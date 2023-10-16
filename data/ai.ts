@@ -18,7 +18,7 @@ export const embed = async (input: string) => {
 
 export async function stream() {
     const response = await client.chat.completions.create({
-        model: 'gpt-4',
+        model: 'gpt-3.5-turbo',
         stream: true,
         messages: [
             {
