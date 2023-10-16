@@ -40,7 +40,7 @@ async function RecursiveTokens({
 export default async function Home() {
     const res = await stream();
     return (
-        <main className="flex flex-col items-stretch justify-end h-[100dvh] p-4 gap-2">
+        <main className="flex flex-col items-stretch justify-end h-[100dvh] p-4 gap-4 bg-black text-white">
             <Tokens stream={res} />
             <Form />
         </main>

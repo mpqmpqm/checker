@@ -15,11 +15,11 @@ export const Form = () => {
         <form action={action} className="flex gap-2  items-end">
             <textarea
                 name="query"
-                className="p-1 border rounded-sm border-slate-300 w-full"
+                className="p-1 border rounded-sm border-slate-800 w-full bg-slate-900 text-white"
             />
             <button
                 type="submit"
-                className="px-2 py-1 text-white rounded-sm bg-blue-600"
+                className="px-2 py-1 text-white rounded-sm bg-slate-900 border border-slate-800"
             >
                 Embed
             </button>
