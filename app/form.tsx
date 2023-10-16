@@ -1,23 +1,20 @@
-'use client';
-
 import { embed } from '@/data/ai';
 import { upsert } from '@/data/pinecone';
-import { useRef } from 'react';
 import { redirect } from 'next/navigation';
 
+const action = async (formData: FormData) => {
+    'use server';
+    const query = formData.get('query') as string;
+    return embed(query)
+        .then((embedding) => upsert(query, embedding))
+        .then((id) => redirect(`/embedding/${id}`));
+};
+
 export const Form = () => {
-    const ref = useRef<HTMLFormElement>(null);
-    const action = (formData: FormData) => {
-        const query = formData.get('query') as string;
-        return embed(query)
-            .then((embedding) => upsert(query, embedding))
-            .then((id) => redirect(`/embedding/${id}`, 'push'));
-    };
     return (
         <form
             action={action}
             className="flex gap-2 grow ps-4 pe-3 py-4 items-end"
-            ref={ref}
         >
             <textarea
                 name="query"
