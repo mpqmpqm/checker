@@ -1,7 +1,7 @@
 'use client';
 
 import { useChat } from 'ai/react';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function Messages({ seed }: { seed: string }) {
     const { messages, input, handleInputChange, handleSubmit } = useChat({
@@ -15,6 +15,10 @@ export default function Messages({ seed }: { seed: string }) {
     });
 
     const form = useRef<HTMLFormElement>(null);
+
+    useEffect(() => {
+        window.scrollTo(0, document.body.scrollHeight);
+    }, [messages]);
 
     return (
         <div>
@@ -32,10 +36,9 @@ export default function Messages({ seed }: { seed: string }) {
                     </div>
                 ))}
             </div>
-
             <form
                 onSubmit={handleSubmit}
-                className="flex gap-2 items-end mt-4"
+                className="flex gap-2 items-end mt-2 sticky bottom-0 -mb-4 bg-black py-4"
                 ref={form}
             >
                 <textarea

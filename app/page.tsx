@@ -44,7 +44,7 @@ async function RecursiveTokens({
 
 export default async function Home() {
     return (
-        <main className="flex flex-col items-stretch justify-end min-h-[100dvh] p-4 space-y-2 bg-black text-white">
+        <main className="flex flex-col items-stretch justify-end min-h-[100dvh] p-4 space-y-2 bg-black text-white relative">
             <Suspense>
                 <Tokens />
             </Suspense>
