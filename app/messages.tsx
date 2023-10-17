@@ -1,6 +1,7 @@
 'use client';
 
 import { useChat } from 'ai/react';
+import { useRef } from 'react';
 
 export default function Messages({ seed }: { seed: string }) {
     const { messages, input, handleInputChange, handleSubmit } = useChat({
@@ -12,6 +13,8 @@ export default function Messages({ seed }: { seed: string }) {
             },
         ],
     });
+
+    const form = useRef<HTMLFormElement>(null);
 
     return (
         <div>
@@ -30,7 +33,11 @@ export default function Messages({ seed }: { seed: string }) {
                 ))}
             </div>
 
-            <form onSubmit={handleSubmit} className="flex gap-2 items-end mt-4">
+            <form
+                onSubmit={handleSubmit}
+                className="flex gap-2 items-end mt-4"
+                ref={form}
+            >
                 <textarea
                     value={input}
                     onChange={handleInputChange}
@@ -40,7 +47,7 @@ export default function Messages({ seed }: { seed: string }) {
                         if (e.key === 'Enter' && e.metaKey) {
                             e.preventDefault();
                             // trigger submit
-                            e.target.form.dispatchEvent(
+                            form.current?.dispatchEvent(
                                 new Event('submit', {
                                     bubbles: true,
                                     cancelable: true,
